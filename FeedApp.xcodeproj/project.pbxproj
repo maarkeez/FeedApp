@@ -8,16 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		D4ED3EC20D4F11ECD239C659 /* Pods_FeedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700B3FD1CEDEA6E759CB4269 /* Pods_FeedApp.framework */; };
+		E55B7AD321A95AD900CA345C /* FeedsResumedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AD221A95AD900CA345C /* FeedsResumedTableViewCell.swift */; };
+		E55B7AD621A95BD200CA345C /* FeedsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AD521A95BD200CA345C /* FeedsClient.swift */; };
+		E55B7AD821A965F900CA345C /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55B7AD721A965F900CA345C /* Kanna.framework */; };
+		E55B7ADA21A9670E00CA345C /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AD921A9670E00CA345C /* FeedItem.swift */; };
 		E569A5BD21A8BE3C00ABAE92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E569A5BC21A8BE3C00ABAE92 /* AppDelegate.swift */; };
 		E569A5BF21A8BE3C00ABAE92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E569A5BE21A8BE3C00ABAE92 /* ViewController.swift */; };
 		E569A5C221A8BE3C00ABAE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E569A5C021A8BE3C00ABAE92 /* Main.storyboard */; };
 		E569A5C421A8BE3F00ABAE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E569A5C321A8BE3F00ABAE92 /* Assets.xcassets */; };
 		E569A5C721A8BE3F00ABAE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E569A5C521A8BE3F00ABAE92 /* LaunchScreen.storyboard */; };
 		E569A5CF21A8C46400ABAE92 /* FeedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E569A5CE21A8C46400ABAE92 /* FeedKit.framework */; };
+		E569A5D321A8DC6300ABAE92 /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E569A5D221A8DC6300ABAE92 /* FeedsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		700B3FD1CEDEA6E759CB4269 /* Pods_FeedApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E55B7AD221A95AD900CA345C /* FeedsResumedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsResumedTableViewCell.swift; sourceTree = "<group>"; };
+		E55B7AD521A95BD200CA345C /* FeedsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsClient.swift; sourceTree = "<group>"; };
+		E55B7AD721A965F900CA345C /* Kanna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kanna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E55B7AD921A9670E00CA345C /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		E569A5B921A8BE3C00ABAE92 /* FeedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E569A5BC21A8BE3C00ABAE92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E569A5BE21A8BE3C00ABAE92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +35,7 @@
 		E569A5C621A8BE3F00ABAE92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E569A5C821A8BE3F00ABAE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E569A5CE21A8C46400ABAE92 /* FeedKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FeedKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E569A5D221A8DC6300ABAE92 /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		EF0A5D33D4EF8073D50F17DD /* Pods-FeedApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedApp/Pods-FeedApp.release.xcconfig"; sourceTree = "<group>"; };
 		FE7C5F547EBBDDA466BEF29B /* Pods-FeedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedApp/Pods-FeedApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55B7AD821A965F900CA345C /* Kanna.framework in Frameworks */,
 				E569A5CF21A8C46400ABAE92 /* FeedKit.framework in Frameworks */,
 				D4ED3EC20D4F11ECD239C659 /* Pods_FeedApp.framework in Frameworks */,
 			);
@@ -55,10 +66,38 @@
 		9AE827579A0CDBEA04D802B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E55B7AD721A965F900CA345C /* Kanna.framework */,
 				E569A5CE21A8C46400ABAE92 /* FeedKit.framework */,
 				700B3FD1CEDEA6E759CB4269 /* Pods_FeedApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E55B7AD021A9576300CA345C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E55B7AD121A95A9F00CA345C /* FeedList */,
+				E569A5BE21A8BE3C00ABAE92 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E55B7AD121A95A9F00CA345C /* FeedList */ = {
+			isa = PBXGroup;
+			children = (
+				E569A5D221A8DC6300ABAE92 /* FeedsViewController.swift */,
+				E55B7AD221A95AD900CA345C /* FeedsResumedTableViewCell.swift */,
+			);
+			path = FeedList;
+			sourceTree = "<group>";
+		};
+		E55B7AD421A95BBD00CA345C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				E55B7AD521A95BD200CA345C /* FeedsClient.swift */,
+				E55B7AD921A9670E00CA345C /* FeedItem.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		E569A5B021A8BE3C00ABAE92 = {
@@ -83,8 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				E569A5BC21A8BE3C00ABAE92 /* AppDelegate.swift */,
-				E569A5BE21A8BE3C00ABAE92 /* ViewController.swift */,
 				E569A5C021A8BE3C00ABAE92 /* Main.storyboard */,
+				E55B7AD421A95BBD00CA345C /* Repository */,
+				E55B7AD021A9576300CA345C /* Controller */,
 				E569A5C321A8BE3F00ABAE92 /* Assets.xcassets */,
 				E569A5C521A8BE3F00ABAE92 /* LaunchScreen.storyboard */,
 				E569A5C821A8BE3F00ABAE92 /* Info.plist */,
@@ -193,12 +233,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FeedApp/Pods-FeedApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -212,8 +254,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E569A5D321A8DC6300ABAE92 /* FeedsViewController.swift in Sources */,
+				E55B7AD321A95AD900CA345C /* FeedsResumedTableViewCell.swift in Sources */,
+				E55B7ADA21A9670E00CA345C /* FeedItem.swift in Sources */,
 				E569A5BF21A8BE3C00ABAE92 /* ViewController.swift in Sources */,
 				E569A5BD21A8BE3C00ABAE92 /* AppDelegate.swift in Sources */,
+				E55B7AD621A95BD200CA345C /* FeedsClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

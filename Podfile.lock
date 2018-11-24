@@ -1,16 +1,20 @@
 PODS:
   - FeedKit (8.0.0)
+  - Kanna (4.0.2)
 
 DEPENDENCIES:
   - FeedKit (~> 8.0)
+  - Kanna (~> 4.0.2)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FeedKit
+    - Kanna
 
 SPEC CHECKSUMS:
   FeedKit: 4a78f07adf7f0a224b904014678f1de82a7ffc21
+  Kanna: c60b61d72554bf04ed1ee074f9b379855cab4892
 
-PODFILE CHECKSUM: 1082a99ca7b84e0065de58eac62e5c1ee22ec49f
+PODFILE CHECKSUM: c8731c5a51526d9cbb4fa90ddf3f69c3702121e9
 
 COCOAPODS: 1.5.3

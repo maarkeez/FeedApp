@@ -5,4 +5,5 @@ use_frameworks!
 
 target 'FeedApp' do
   pod 'FeedKit', '~> 8.0'
+  pod 'Kanna', '~> 4.0.2'
 end
