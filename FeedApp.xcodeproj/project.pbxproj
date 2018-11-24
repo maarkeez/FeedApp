@@ -12,6 +12,12 @@
 		E55B7AD621A95BD200CA345C /* FeedsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AD521A95BD200CA345C /* FeedsClient.swift */; };
 		E55B7AD821A965F900CA345C /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55B7AD721A965F900CA345C /* Kanna.framework */; };
 		E55B7ADA21A9670E00CA345C /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AD921A9670E00CA345C /* FeedItem.swift */; };
+		E55B7ADD21A99D2000CA345C /* ScreenUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7ADC21A99D2000CA345C /* ScreenUtils.swift */; };
+		E55B7AE121A9A0FD00CA345C /* FeedSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AE021A9A0FD00CA345C /* FeedSubscriptionViewController.swift */; };
+		E55B7AE321A9A21500CA345C /* FeedSubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AE221A9A21500CA345C /* FeedSubscriptionCell.swift */; };
+		E55B7AE521A9A24100CA345C /* FeedSubscriptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AE421A9A24100CA345C /* FeedSubscriptionItem.swift */; };
+		E55B7AE721A9A28300CA345C /* FeedSubscriptionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AE621A9A28300CA345C /* FeedSubscriptionRepository.swift */; };
+		E55B7AE921A9AE6800CA345C /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AE821A9AE6800CA345C /* StringUtils.swift */; };
 		E569A5BD21A8BE3C00ABAE92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E569A5BC21A8BE3C00ABAE92 /* AppDelegate.swift */; };
 		E569A5BF21A8BE3C00ABAE92 /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E569A5BE21A8BE3C00ABAE92 /* FeedDetailViewController.swift */; };
 		E569A5C221A8BE3C00ABAE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E569A5C021A8BE3C00ABAE92 /* Main.storyboard */; };
@@ -27,6 +33,12 @@
 		E55B7AD521A95BD200CA345C /* FeedsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsClient.swift; sourceTree = "<group>"; };
 		E55B7AD721A965F900CA345C /* Kanna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kanna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E55B7AD921A9670E00CA345C /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		E55B7ADC21A99D2000CA345C /* ScreenUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUtils.swift; sourceTree = "<group>"; };
+		E55B7AE021A9A0FD00CA345C /* FeedSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSubscriptionViewController.swift; sourceTree = "<group>"; };
+		E55B7AE221A9A21500CA345C /* FeedSubscriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSubscriptionCell.swift; sourceTree = "<group>"; };
+		E55B7AE421A9A24100CA345C /* FeedSubscriptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSubscriptionItem.swift; sourceTree = "<group>"; };
+		E55B7AE621A9A28300CA345C /* FeedSubscriptionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSubscriptionRepository.swift; sourceTree = "<group>"; };
+		E55B7AE821A9AE6800CA345C /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		E569A5B921A8BE3C00ABAE92 /* FeedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E569A5BC21A8BE3C00ABAE92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E569A5BE21A8BE3C00ABAE92 /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +88,7 @@
 		E55B7AD021A9576300CA345C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E55B7ADE21A9A0D000CA345C /* FeedSubscription */,
 				E55B7AD121A95A9F00CA345C /* FeedList */,
 			);
 			path = Controller;
@@ -96,8 +109,28 @@
 			children = (
 				E55B7AD521A95BD200CA345C /* FeedsClient.swift */,
 				E55B7AD921A9670E00CA345C /* FeedItem.swift */,
+				E55B7AE421A9A24100CA345C /* FeedSubscriptionItem.swift */,
+				E55B7AE621A9A28300CA345C /* FeedSubscriptionRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		E55B7ADB21A99D0200CA345C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E55B7ADC21A99D2000CA345C /* ScreenUtils.swift */,
+				E55B7AE821A9AE6800CA345C /* StringUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E55B7ADE21A9A0D000CA345C /* FeedSubscription */ = {
+			isa = PBXGroup;
+			children = (
+				E55B7AE021A9A0FD00CA345C /* FeedSubscriptionViewController.swift */,
+				E55B7AE221A9A21500CA345C /* FeedSubscriptionCell.swift */,
+			);
+			path = FeedSubscription;
 			sourceTree = "<group>";
 		};
 		E569A5B021A8BE3C00ABAE92 = {
@@ -125,6 +158,7 @@
 				E569A5C021A8BE3C00ABAE92 /* Main.storyboard */,
 				E55B7AD421A95BBD00CA345C /* Repository */,
 				E55B7AD021A9576300CA345C /* Controller */,
+				E55B7ADB21A99D0200CA345C /* Utils */,
 				E569A5C321A8BE3F00ABAE92 /* Assets.xcassets */,
 				E569A5C521A8BE3F00ABAE92 /* LaunchScreen.storyboard */,
 				E569A5C821A8BE3F00ABAE92 /* Info.plist */,
@@ -254,12 +288,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55B7AE921A9AE6800CA345C /* StringUtils.swift in Sources */,
 				E569A5D321A8DC6300ABAE92 /* FeedsViewController.swift in Sources */,
 				E55B7AD321A95AD900CA345C /* FeedsResumedTableViewCell.swift in Sources */,
+				E55B7AE721A9A28300CA345C /* FeedSubscriptionRepository.swift in Sources */,
 				E55B7ADA21A9670E00CA345C /* FeedItem.swift in Sources */,
+				E55B7ADD21A99D2000CA345C /* ScreenUtils.swift in Sources */,
 				E569A5BF21A8BE3C00ABAE92 /* FeedDetailViewController.swift in Sources */,
 				E569A5BD21A8BE3C00ABAE92 /* AppDelegate.swift in Sources */,
 				E55B7AD621A95BD200CA345C /* FeedsClient.swift in Sources */,
+				E55B7AE121A9A0FD00CA345C /* FeedSubscriptionViewController.swift in Sources */,
+				E55B7AE321A9A21500CA345C /* FeedSubscriptionCell.swift in Sources */,
+				E55B7AE521A9A24100CA345C /* FeedSubscriptionItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

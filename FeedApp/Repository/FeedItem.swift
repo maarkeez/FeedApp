@@ -19,6 +19,7 @@ class FeedItem {
     let html : String
     let title : String
     let firstParagraph : String
+    let idHash: String
     
     init(_ feed: RSSFeedItem) {
         feedSource = feed
@@ -28,7 +29,7 @@ class FeedItem {
         imageUI = FeedItem.getUIImage(imageSrc)
         title = feed.title ?? ""
         firstParagraph = FeedItem.getFirstParagraph(html)
-        
+        idHash = title.sha256() + "-" + html.sha256()
     }
     
     private static func parseHtml(_ input: String?) -> String{

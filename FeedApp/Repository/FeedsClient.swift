@@ -18,14 +18,18 @@ class FeedsClient {
     
     static let singleton = FeedsClient()
 
- let feedURL = URL(string: "http://feeds.weblogssl.com/xataka2")!
+    var feedURL: URL?
 //    let feedURL = URL(string: "http://feeds.feedburner.com/cuantarazon")!
     
     var items: [RSSFeedItem] = []
-    var subscribers: [FeedsClientSubscriber] = []
+    var subscriber: FeedsClientSubscriber?
+    var parser : FeedParser?
     
-    init(){
-        let parser = FeedParser(URL: feedURL) // or FeedParser(data: data) or FeedParser(xmlStream: stream)
+    func restart(_ subscriber: FeedsClientSubscriber, feedSubscription: FeedSubscriptionItem){
+        
+        self.subscriber = subscriber
+        
+        let parser = FeedParser(URL: URL(string: feedSubscription.url)!) // or FeedParser(data: data) or FeedParser(xmlStream: stream)
         
         parser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
             // Do your thing, then back to the Main thread
@@ -47,25 +51,11 @@ class FeedsClient {
                 }
                 
                 for item in items {
-                    self.notifySubscribers(item)
+                    self.subscriber?.notify(FeedItem(item))
                 }
                 
-               
-               
             }
         }
     }
-    
-    func subscribe(_ subsriber: FeedsClientSubscriber){
-        self.subscribers.append(subsriber)
-    }
-    
-    private func notifySubscribers(_ item: RSSFeedItem){
-        for subscriber in self.subscribers{
-            subscriber.notify(FeedItem(item))
-        }
-    }
-    
-   
 
 }

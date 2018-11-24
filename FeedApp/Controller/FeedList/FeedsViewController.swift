@@ -11,6 +11,7 @@ import FeedKit
 
 class FeedsViewController: UIViewController {
 
+    var myFeedSubscription : FeedSubscriptionItem?
     var items: [FeedItem] = []
 
     @IBOutlet weak var myTable: UITableView!
@@ -18,8 +19,8 @@ class FeedsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FeedsClient.singleton.subscribe(self)
-        
+        FeedsClient.singleton.restart(self , feedSubscription: myFeedSubscription!)
+    
         self.myTable.delegate = self
         self.myTable.dataSource = self
         // Do any additional setup after loading the view.
@@ -44,7 +45,7 @@ class FeedsViewController: UIViewController {
 
 extension FeedsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedResumedViewCell") as! FeedsResumedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsResumedTableViewCell") as! FeedsResumedTableViewCell
         let feedItem = self.items[indexPath.row]
         
         cell.myTitle.text = feedItem.title

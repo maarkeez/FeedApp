@@ -10,7 +10,7 @@ import UIKit
 import FeedKit
 import WebKit
 
-class FeedDetailViewController: UIViewController {
+class FeedDetailViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var myWebView: WKWebView!
     var myFeedItem : FeedItem?
@@ -18,18 +18,21 @@ class FeedDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recalculateImageWidth), name: UIDevice.orientationDidChangeNotification, object: nil)
     
-        
+        self.myWebView.navigationDelegate = self
         self.myWebView.scrollView.delegate = self
         self.myWebView.loadHTMLString(FeedDetailViewController.parseHtml(myFeedItem?.html) , baseURL: nil)
-        rotated()
+
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.recalculateImageWidth()
     }
 
     private static func parseHtml(_ input: String?) -> String{
-
         var html = "<head><style>* { font-family: Optima-Regular; text-align: justify; } h1 { text-align: left; } </style>"
-        html += "<meta name='viewport' content='initial-scale=1.0'/></head><body>"
+        html += "<meta name='viewport' content='initial-scale=1.0' width='device-width'/></head><body>"
         html += input ?? ""
     
         html += "</body>"
@@ -37,33 +40,17 @@ class FeedDetailViewController: UIViewController {
         return html
     }
     
-    
-    @objc func rotated() {
+   
+    @objc func recalculateImageWidth() {
  
-        let screenSize = UIScreen.main.bounds
-        var screenWidth = screenSize.width - 16
-
-        if UIDevice.current.orientation.isLandscape {
-            screenWidth -= 16
-            //print("Landscape")
-        } else {
-            //print("Portrait")
-        }
-        
-       
-        //print("Size: ", screenWidth)
-        self.myWebView.evaluateJavaScript("var maxWidth = '\(screenWidth)px'; document.querySelector('img').style.width=maxWidth;",completionHandler: nil)
+        self.myWebView.evaluateJavaScript("var maxWidth = '\(ScreenUtils.getScreenWidth())px'; document.querySelector('img').style.width=maxWidth; document.querySelector('img').style.maxWidth=maxWidth; document.querySelector('img').style.minWidth=maxWidth;",completionHandler: nil)
         
     }
 
     func viewWillTransition(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition(in: view, animation: nil) { (UIViewControllerTransitionCoordinatorContext) in
-           
-
-            
+        
             self.myWebView.loadHTMLString(FeedDetailViewController.parseHtml(self.myFeedItem?.html) , baseURL: nil)
-
-            
         }
     }
 }
