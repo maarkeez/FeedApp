@@ -29,6 +29,12 @@ class FeedsClient {
         
         self.subscriber = subscriber
         
+        
+        let storedFeeds = FeedItemRepository.singleton.list(subscriptionType: feedSubscription.name)
+        for storedFeed in storedFeeds {
+            self.subscriber?.notify(storedFeed)
+        }
+        
         let parser = FeedParser(URL: URL(string: feedSubscription.url)!) // or FeedParser(data: data) or FeedParser(xmlStream: stream)
         
         parser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
@@ -50,10 +56,17 @@ class FeedsClient {
                     return
                 }
                 
+                var feedItems : [FeedItem] = []
                 for item in items {
-                    self.subscriber?.notify(FeedItem(item))
+                    feedItems.append(FeedItem(item))
+                    
                 }
                 
+                let newFeeds = FeedItemRepository.singleton.add(feedSubscription.name, items: feedItems)
+                
+                for newFeed in newFeeds {
+                    self.subscriber?.notify(newFeed)
+                }
             }
         }
     }

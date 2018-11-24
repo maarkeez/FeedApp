@@ -13,23 +13,33 @@ import Kanna
 
 class FeedItem {
     
-    let feedSource : RSSFeedItem
     let imageSrc : String
     let imageUI : UIImage?
     let html : String
     let title : String
     let firstParagraph : String
     let idHash: String
+    var readed: Bool
+    
+    init(_ feed: Feed) {
+        html = FeedItem.parseHtml(feed.html)
+        imageSrc = feed.imageSrc!
+        imageUI = FeedItem.getUIImage(imageSrc)
+        title = feed.title!
+        firstParagraph = feed.firstParagraph!
+        idHash = feed.id!
+        readed = feed.readed
+    }
     
     init(_ feed: RSSFeedItem) {
-        feedSource = feed
-        
+       
         html = FeedItem.parseHtml(feed.description)
         imageSrc = FeedItem.getFirstImageSrc(html)
         imageUI = FeedItem.getUIImage(imageSrc)
         title = feed.title ?? ""
         firstParagraph = FeedItem.getFirstParagraph(html)
         idHash = title.sha256() + "-" + html.sha256()
+        readed = false
     }
     
     private static func parseHtml(_ input: String?) -> String{
