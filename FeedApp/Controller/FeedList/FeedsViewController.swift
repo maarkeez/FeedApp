@@ -26,15 +26,20 @@ class FeedsViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    
+       // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if  segue.identifier == "FeedDetailSegue", let destination = segue.destination as? FeedDetailViewController,
+            let itemIndex = myTable.indexPathForSelectedRow?.row
+        {
+            destination.myFeedItem = self.items[itemIndex]
+        }
     }
-    */
+   
 }
 
 extension FeedsViewController: UITableViewDataSource, UITableViewDelegate {
@@ -61,6 +66,7 @@ extension FeedsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
+    
 }
 
 extension FeedsViewController: FeedsClientSubscriber{

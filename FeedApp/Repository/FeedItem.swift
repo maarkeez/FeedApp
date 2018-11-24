@@ -32,12 +32,9 @@ class FeedItem {
     }
     
     private static func parseHtml(_ input: String?) -> String{
-        var html = "<head><style>* { max-width:  320px; font-family: Optima-Regular; text-align: justify; } h1 { text-align: left; } </style>"
-        html += "<meta name='viewport' content='initial-scale=1.0'/></head><body>"
-        html += input ?? ""
-        html += "</body>"
-        print("HTML: ", html)
-        return html
+       
+        return input ?? ""
+       
     }
     
     private static func getFirstImageSrc(_ html: String) -> String{

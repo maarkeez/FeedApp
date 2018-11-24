@@ -18,7 +18,9 @@ class FeedsClient {
     
     static let singleton = FeedsClient()
 
-    let feedURL = URL(string: "http://feeds.weblogssl.com/xataka2")!
+ let feedURL = URL(string: "http://feeds.weblogssl.com/xataka2")!
+//    let feedURL = URL(string: "http://feeds.feedburner.com/cuantarazon")!
+    
     var items: [RSSFeedItem] = []
     var subscribers: [FeedsClientSubscriber] = []
     
