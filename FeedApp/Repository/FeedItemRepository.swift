@@ -97,7 +97,7 @@ class FeedItemRepository {
             
             let feeds = try ctx!.fetch(fetchRequest) as! [Feed]
             for feed in feeds{
-                updateMO(item, feedItem: feed, subscriptionType: subscriptionType)
+                feed.readed = readed
             }
             
             try ctx!.save()

@@ -48,6 +48,10 @@ class FeedsViewController: UIViewController {
             let itemIndex = myTable.indexPathForSelectedRow?.row
         {
             destination.myFeedItem = self.items[itemIndex]
+            self.items[itemIndex].readed = true
+            DispatchQueue.global(qos: .default).async {
+                FeedItemRepository.singleton.update(self.items[itemIndex], subscriptionType: self.myFeedSubscription!.name, readed: true)
+            }
         }
     }
    
@@ -61,6 +65,12 @@ extension FeedsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.myTitle.text = feedItem.title
         cell.myText.text = feedItem.firstParagraph 
         cell.myImage.image = feedItem.imageUI
+        
+        if (feedItem.readed ){
+            cell.myTitle.textColor = UIColor.lightGray
+        }else{
+            cell.myTitle.textColor = UIColor.black
+        }
     
         return cell
     }
