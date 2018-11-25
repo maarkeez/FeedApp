@@ -21,7 +21,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hXM-Ek-Ecw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedsResumedTableViewCell" rowHeight="600" id="Zs7-pu-u7a" customClass="FeedsResumedTableViewCell" customModule="FeedApp" customModuleProvider="target">
@@ -32,7 +31,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zQl-eP-jDb">
-                                                    <rect key="frame" x="4" y="4" width="367" height="431.5"/>
+                                                    <rect key="frame" x="0.0" y="4" width="375" height="437.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KF3-qr-EYv">
                                                     <rect key="frame" x="4" y="505.5" width="367" height="90"/>
@@ -52,23 +51,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="Pzb-Cx-Bdw">
+                                                    <rect key="frame" x="0.0" y="393.5" width="375" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="tY6-Gi-HhS"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="KF3-qr-EYv" firstAttribute="leading" secondItem="7JP-iM-KGi" secondAttribute="leading" constant="4" id="AvB-SP-ddV"/>
-                                                <constraint firstAttribute="trailing" secondItem="zQl-eP-jDb" secondAttribute="trailing" constant="4" id="Bw3-oh-ao0"/>
                                                 <constraint firstItem="KF3-qr-EYv" firstAttribute="top" secondItem="nEh-jt-aCT" secondAttribute="bottom" constant="2" id="GpF-W8-xh2"/>
                                                 <constraint firstAttribute="bottom" secondItem="KF3-qr-EYv" secondAttribute="bottom" constant="4" id="GuS-UJ-oHB"/>
-                                                <constraint firstItem="nEh-jt-aCT" firstAttribute="top" secondItem="zQl-eP-jDb" secondAttribute="bottom" constant="8" id="HmU-7I-Bdd"/>
+                                                <constraint firstItem="zQl-eP-jDb" firstAttribute="leading" secondItem="7JP-iM-KGi" secondAttribute="leading" id="Hbm-R1-g5t"/>
                                                 <constraint firstAttribute="trailing" secondItem="nEh-jt-aCT" secondAttribute="trailing" constant="4" id="IHo-jB-rHa"/>
-                                                <constraint firstItem="zQl-eP-jDb" firstAttribute="top" secondItem="7JP-iM-KGi" secondAttribute="top" constant="4" id="MUy-uh-YgE"/>
+                                                <constraint firstItem="nEh-jt-aCT" firstAttribute="top" secondItem="Pzb-Cx-Bdw" secondAttribute="bottom" id="MPE-r6-X9d"/>
+                                                <constraint firstAttribute="trailing" secondItem="zQl-eP-jDb" secondAttribute="trailing" id="Owi-Hx-kDp"/>
                                                 <constraint firstItem="KF3-qr-EYv" firstAttribute="top" secondItem="nEh-jt-aCT" secondAttribute="bottom" constant="2" id="U3X-kd-mjg"/>
-                                                <constraint firstItem="zQl-eP-jDb" firstAttribute="top" secondItem="7JP-iM-KGi" secondAttribute="top" constant="4" id="WH4-YX-QY2"/>
-                                                <constraint firstItem="zQl-eP-jDb" firstAttribute="leading" secondItem="7JP-iM-KGi" secondAttribute="leading" constant="4" id="f5j-bs-iJh"/>
-                                                <constraint firstAttribute="trailing" secondItem="zQl-eP-jDb" secondAttribute="trailing" constant="4" id="gev-qc-tLa"/>
-                                                <constraint firstItem="zQl-eP-jDb" firstAttribute="leading" secondItem="7JP-iM-KGi" secondAttribute="leading" constant="4" id="iDs-j4-HTb"/>
-                                                <constraint firstItem="nEh-jt-aCT" firstAttribute="top" secondItem="zQl-eP-jDb" secondAttribute="bottom" constant="8" id="npx-c4-yyt"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pzb-Cx-Bdw" secondAttribute="trailing" id="XJe-2G-grY"/>
+                                                <constraint firstItem="nEh-jt-aCT" firstAttribute="top" secondItem="zQl-eP-jDb" secondAttribute="bottom" constant="2" id="duj-Ha-mtq"/>
+                                                <constraint firstItem="zQl-eP-jDb" firstAttribute="top" secondItem="7JP-iM-KGi" secondAttribute="top" constant="4" id="ouB-vH-DNm"/>
                                                 <constraint firstAttribute="trailing" secondItem="KF3-qr-EYv" secondAttribute="trailing" constant="4" id="wtg-mI-fbv"/>
                                                 <constraint firstItem="nEh-jt-aCT" firstAttribute="leading" secondItem="7JP-iM-KGi" secondAttribute="leading" constant="4" id="xnC-du-z6Q"/>
+                                                <constraint firstItem="Pzb-Cx-Bdw" firstAttribute="leading" secondItem="7JP-iM-KGi" secondAttribute="leading" id="yAr-vS-zGi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -291,4 +295,7 @@
             <point key="canvasLocation" x="-1206" y="130"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="triangle" width="751" height="72"/>
+    </resources>
 </document>
