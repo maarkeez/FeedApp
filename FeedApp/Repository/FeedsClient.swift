@@ -9,66 +9,68 @@
 import Foundation
 import FeedKit
 import Kanna
+import WebKit
+
 
 protocol FeedsClientSubscriber {
-    func notify(_ newItem : FeedItem)
+    func notifyEndFeed(_ feedSubscription: FeedSubscriptionItem)
 }
+
 
 class FeedsClient {
     
     static let singleton = FeedsClient()
-
+    
     var feedURL: URL?
-//    let feedURL = URL(string: "http://feeds.feedburner.com/cuantarazon")!
     
     var items: [RSSFeedItem] = []
-    var subscriber: FeedsClientSubscriber?
     var parser : FeedParser?
     
     func restart(_ subscriber: FeedsClientSubscriber, feedSubscription: FeedSubscriptionItem){
-        
-        self.subscriber = subscriber
-        
-        
-        let storedFeeds = FeedItemRepository.singleton.list(subscriptionType: feedSubscription.name)
-        for storedFeed in storedFeeds {
-            self.subscriber?.notify(storedFeed)
-        }
-        
-        let parser = FeedParser(URL: URL(string: feedSubscription.url)!) // or FeedParser(data: data) or FeedParser(xmlStream: stream)
-        
-        parser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
-            // Do your thing, then back to the Main thread
-            DispatchQueue.main.async {
-                // ..and update the UI
-                
-                print("Result sucess: " , result.isSuccess )
-                print("Result is failure: " , result.isFailure )
-                guard let feed = result.rssFeed, result.isSuccess else {
-                    print(result.error ?? "No error found")
-                    return
-                }
-                
-                print("Items count: " , feed.items?.count ?? 0 )
-                
-                guard let items = feed.items else {
-                    print("No items found")
-                    return
-                }
-                
-                var feedItems : [FeedItem] = []
-                for item in items {
-                    feedItems.append(FeedItem(item))
+        print("Feed subscription: " , feedSubscription.name )
+        do{
+           
+            let parser = FeedParser(URL: URL(string: feedSubscription.url)!) // or FeedParser(data: data) or FeedParser(xmlStream: stream)
+            
+            parser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
+                // Do your thing, then back to the Main thread
+                DispatchQueue.global(qos: .default).async {
+                    // ..and update the UI
                     
+                    print("Result sucess: " , result.isSuccess )
+                    print("Result is failure: " , result.isFailure )
+                    guard let feed = result.rssFeed, result.isSuccess else {
+                        print(result.error ?? "No error found")
+                        return
+                    }
+                    
+                    print("Items count: " , feed.items?.count ?? 0 )
+                    
+                    guard let items = feed.items else {
+                        print("No items found")
+                        return
+                    }
+                    
+                    var feedItems : [FeedItem] = []
+                    for item in items {
+                        feedItems.append(FeedItem(item))
+                    }
+                    
+                    let itemsAdded = FeedItemRepository.singleton.add(feedSubscription.name, items: feedItems)
+                    print("Items added: ", itemsAdded.count)
+                    
+                    DispatchQueue.main.async {
+                        subscriber.notifyEndFeed(feedSubscription)
+                    }
+                    print()
                 }
-                
-                let newFeeds = FeedItemRepository.singleton.add(feedSubscription.name, items: feedItems)
-                
-                for newFeed in newFeeds {
-                    self.subscriber?.notify(newFeed)
-                }
+            }
+        } catch let error{
+            print("EROR: Error in data download.")
+            print(error.localizedDescription)
+            DispatchQueue.main.async {
+                subscriber.notifyEndFeed(feedSubscription)
             }
         }
     }
-
 }

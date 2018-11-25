@@ -10,7 +10,9 @@ import UIKit
 import FeedKit
 
 class FeedsViewController: UIViewController {
-
+    
+    @IBOutlet weak var myCountItem: UIBarButtonItem!
+    
     var myFeedSubscription : FeedSubscriptionItem?
     var items: [FeedItem] = []
 
@@ -19,12 +21,20 @@ class FeedsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FeedsClient.singleton.restart(self , feedSubscription: myFeedSubscription!)
+        DispatchQueue.main.async {
+            for item in FeedItemRepository.singleton.list(subscriptionType:  self.myFeedSubscription!.name){
+                DispatchQueue.main.async {
+                    self.notify(item)
+                }
+            }
+        }
     
         self.myTable.delegate = self
         self.myTable.dataSource = self
         // Do any additional setup after loading the view.
     }
+    
+    
     
 
     
@@ -68,15 +78,13 @@ extension FeedsViewController: UITableViewDataSource, UITableViewDelegate {
         return items.count
     }
     
-}
-
-extension FeedsViewController: FeedsClientSubscriber{
     func notify(_ newItem: FeedItem) {
         items.append(newItem)
         myTable.beginUpdates()
         myTable.insertRows(at: [NSIndexPath(row: items.count-1, section: 0) as IndexPath],
                            with: .automatic)
         myTable.endUpdates()
+        myCountItem.title = "\(items.count)"
     }
 }
 

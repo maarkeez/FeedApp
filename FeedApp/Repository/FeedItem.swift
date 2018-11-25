@@ -24,7 +24,11 @@ class FeedItem {
     init(_ feed: Feed) {
         html = FeedItem.parseHtml(feed.html)
         imageSrc = feed.imageSrc!
-        imageUI = FeedItem.getUIImage(imageSrc)
+        if let imgData = feed.image{
+            imageUI = UIImage(data: imgData)
+        }else{
+            imageUI=nil
+        }
         title = feed.title!
         firstParagraph = feed.firstParagraph!
         idHash = feed.id!

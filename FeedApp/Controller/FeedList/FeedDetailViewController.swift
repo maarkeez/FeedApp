@@ -53,6 +53,12 @@ class FeedDetailViewController: UIViewController, WKNavigationDelegate {
             self.myWebView.loadHTMLString(FeedDetailViewController.parseHtml(self.myFeedItem?.html) , baseURL: nil)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FeedImageDetailSegue", let destination = segue.destination as? FeedImageDetailViewController {
+            destination.myImageUI = myFeedItem?.imageUI
+        }
+    }
 }
 
 extension FeedDetailViewController: UIScrollViewDelegate {

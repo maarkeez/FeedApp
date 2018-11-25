@@ -11,7 +11,8 @@ import UIKit
 class FeedSubscriptionCell: UITableViewCell {
     
     @IBOutlet weak var myLabel: UILabel!
-
+    @IBOutlet weak var myStatus: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

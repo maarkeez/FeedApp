@@ -21,6 +21,7 @@
 		E55B7AEC21A9AF7F00CA345C /* FeedApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AEA21A9AF7F00CA345C /* FeedApp.xcdatamodeld */; };
 		E55B7AEE21A9B02400CA345C /* FeedItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AED21A9B02400CA345C /* FeedItemRepository.swift */; };
 		E55B7AF021A9B03600CA345C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E55B7AEF21A9B03600CA345C /* CoreData.framework */; };
+		E55B7AF221A9CD3A00CA345C /* FeedImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B7AF121A9CD3A00CA345C /* FeedImageDetailViewController.swift */; };
 		E569A5BD21A8BE3C00ABAE92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E569A5BC21A8BE3C00ABAE92 /* AppDelegate.swift */; };
 		E569A5BF21A8BE3C00ABAE92 /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E569A5BE21A8BE3C00ABAE92 /* FeedDetailViewController.swift */; };
 		E569A5C221A8BE3C00ABAE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E569A5C021A8BE3C00ABAE92 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		E55B7AEB21A9AF7F00CA345C /* FeedApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeedApp.xcdatamodel; sourceTree = "<group>"; };
 		E55B7AED21A9B02400CA345C /* FeedItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemRepository.swift; sourceTree = "<group>"; };
 		E55B7AEF21A9B03600CA345C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E55B7AF121A9CD3A00CA345C /* FeedImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDetailViewController.swift; sourceTree = "<group>"; };
 		E569A5B921A8BE3C00ABAE92 /* FeedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E569A5BC21A8BE3C00ABAE92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E569A5BE21A8BE3C00ABAE92 /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				E55B7ADE21A9A0D000CA345C /* FeedSubscription */,
 				E55B7AD121A95A9F00CA345C /* FeedList */,
+				E55B7AF121A9CD3A00CA345C /* FeedImageDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				E569A5D321A8DC6300ABAE92 /* FeedsViewController.swift in Sources */,
 				E55B7AD321A95AD900CA345C /* FeedsResumedTableViewCell.swift in Sources */,
 				E55B7AEC21A9AF7F00CA345C /* FeedApp.xcdatamodeld in Sources */,
+				E55B7AF221A9CD3A00CA345C /* FeedImageDetailViewController.swift in Sources */,
 				E55B7AE721A9A28300CA345C /* FeedSubscriptionRepository.swift in Sources */,
 				E55B7ADA21A9670E00CA345C /* FeedItem.swift in Sources */,
 				E55B7ADD21A99D2000CA345C /* ScreenUtils.swift in Sources */,

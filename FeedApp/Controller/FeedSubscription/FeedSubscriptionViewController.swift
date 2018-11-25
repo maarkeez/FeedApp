@@ -7,10 +7,51 @@
 //
 
 import UIKit
+import WebKit
 
-class FeedSubscriptionViewController: UIViewController {
+class FeedSubscriptionViewController: UIViewController, FeedsClientSubscriber {
     
     @IBOutlet weak var myTable: UITableView!
+    
+    var nextLoadIndex = -1
+    
+    @IBAction func doLoadAll(_ sender: Any) {
+        nextLoadIndex = -1
+        // Change all subscription status
+        for index in 0..<FeedSubscriptionRepository.singleton.feedSubscriptions.count {
+            let cell = myTable.cellForRow(at: IndexPath(item: index, section: 0)) as! FeedSubscriptionCell
+            cell.myStatus.text = "Loading ..."
+        }
+        
+        // Load each subscription feeds asynchronusly
+        loadNext()
+    }
+    
+    
+    func notifyEndFeed(_ feedSubscription: FeedSubscriptionItem) {
+       
+        // Change all subscription status
+        for index in 0..<FeedSubscriptionRepository.singleton.feedSubscriptions.count {
+            let cell = myTable.cellForRow(at: IndexPath(item: index, section: 0)) as! FeedSubscriptionCell
+            if cell.myLabel.text == feedSubscription.name {
+                cell.myStatus.text = "Load finished!"
+                print("Load finished for: ", feedSubscription.name)
+            }
+        }
+        
+        
+        loadNext()
+        
+    }
+    
+    func loadNext(){
+        nextLoadIndex += 1
+        if(nextLoadIndex<FeedSubscriptionRepository.singleton.feedSubscriptions.count){
+            FeedsClient.singleton.restart(self, feedSubscription: FeedSubscriptionRepository.singleton.feedSubscriptions[nextLoadIndex])
+        }
+            
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +79,14 @@ extension FeedSubscriptionViewController: UITableViewDataSource, UITableViewDele
         let item = FeedSubscriptionRepository.singleton.feedSubscriptions[indexPath.row]
         
         cell.myLabel.text = item.name
+        cell.myStatus.text = ""
         
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 70
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
