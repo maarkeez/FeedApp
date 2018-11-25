@@ -133,7 +133,7 @@
                     <navigationItem key="navigationItem" id="a96-pq-J7d">
                         <barButtonItem key="rightBarButtonItem" title="View image" id="Qyh-Tm-gBp">
                             <connections>
-                                <segue destination="Vu6-TN-Nly" kind="show" identifier="FeedImageDetailSegue" id="pmx-fy-NcM"/>
+                                <segue destination="eAz-vu-qrZ" kind="show" identifier="FeedImageDetailSegue" id="HD5-uc-1Mc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -146,51 +146,50 @@
             <point key="canvasLocation" x="1783" y="130"/>
         </scene>
         <!--Feed Image Detail View Controller-->
-        <scene sceneID="m8v-Rd-xT0">
+        <scene sceneID="egr-Ty-gQu">
             <objects>
-                <viewController storyboardIdentifier="FeedImageDetailViewController" id="Vu6-TN-Nly" customClass="FeedImageDetailViewController" customModule="FeedApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2oZ-zf-p6i">
+                <viewController storyboardIdentifier="FeedImageDetailViewController" id="eAz-vu-qrZ" customClass="FeedImageDetailViewController" customModule="FeedApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XI7-wf-hEZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="NGS-iN-MSx">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Pa-hQ-GEm">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="THF-AS-ts4">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PTS-Gj-uD1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="375" id="4Bw-eR-scc"/>
-                                            <constraint firstAttribute="height" constant="603" id="g4e-5H-7Sq"/>
-                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="THF-AS-ts4" firstAttribute="leading" secondItem="NGS-iN-MSx" secondAttribute="leading" id="7Du-9i-6Nm"/>
-                                    <constraint firstAttribute="trailing" secondItem="THF-AS-ts4" secondAttribute="trailing" id="9wV-oI-TdL"/>
-                                    <constraint firstItem="THF-AS-ts4" firstAttribute="top" secondItem="NGS-iN-MSx" secondAttribute="top" id="eVg-8z-mbL"/>
-                                    <constraint firstAttribute="bottom" secondItem="THF-AS-ts4" secondAttribute="bottom" id="p3p-Y5-FH9"/>
+                                    <constraint firstAttribute="trailing" secondItem="PTS-Gj-uD1" secondAttribute="trailing" id="1GS-JP-Q9n"/>
+                                    <constraint firstItem="PTS-Gj-uD1" firstAttribute="centerX" secondItem="6Pa-hQ-GEm" secondAttribute="centerX" id="8cr-lR-2ha"/>
+                                    <constraint firstItem="PTS-Gj-uD1" firstAttribute="centerY" secondItem="6Pa-hQ-GEm" secondAttribute="centerY" id="Dkw-YI-hlM"/>
+                                    <constraint firstItem="PTS-Gj-uD1" firstAttribute="top" secondItem="6Pa-hQ-GEm" secondAttribute="top" id="olj-gO-ZjF"/>
+                                    <constraint firstAttribute="bottom" secondItem="PTS-Gj-uD1" secondAttribute="bottom" id="pjW-yI-VAp"/>
+                                    <constraint firstItem="PTS-Gj-uD1" firstAttribute="leading" secondItem="6Pa-hQ-GEm" secondAttribute="leading" id="vSo-aL-H0X"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="delegate" destination="Vu6-TN-Nly" id="aX2-uq-De5"/>
+                                    <outlet property="delegate" destination="eAz-vu-qrZ" id="vL0-GH-D1f"/>
                                 </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NGS-iN-MSx" firstAttribute="top" secondItem="XIt-6S-njq" secondAttribute="top" id="U1u-re-CJa"/>
-                            <constraint firstAttribute="trailing" secondItem="NGS-iN-MSx" secondAttribute="trailing" id="e49-UV-fvh"/>
-                            <constraint firstItem="NGS-iN-MSx" firstAttribute="bottom" secondItem="XIt-6S-njq" secondAttribute="bottom" id="i7E-MP-PsY"/>
-                            <constraint firstItem="NGS-iN-MSx" firstAttribute="leading" secondItem="2oZ-zf-p6i" secondAttribute="leading" id="j3N-9j-dOX"/>
+                            <constraint firstItem="6Pa-hQ-GEm" firstAttribute="leading" secondItem="X9h-cI-gwL" secondAttribute="leading" id="BTT-lL-UXG"/>
+                            <constraint firstItem="6Pa-hQ-GEm" firstAttribute="trailing" secondItem="X9h-cI-gwL" secondAttribute="trailing" id="DTc-bX-yd3"/>
+                            <constraint firstItem="6Pa-hQ-GEm" firstAttribute="bottom" secondItem="X9h-cI-gwL" secondAttribute="bottom" id="ENL-KH-XJ8"/>
+                            <constraint firstItem="6Pa-hQ-GEm" firstAttribute="top" secondItem="X9h-cI-gwL" secondAttribute="top" id="efz-xH-YJC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="XIt-6S-njq"/>
+                        <viewLayoutGuide key="safeArea" id="X9h-cI-gwL"/>
                     </view>
                     <connections>
-                        <outlet property="myImage" destination="THF-AS-ts4" id="NwF-IL-mOb"/>
+                        <outlet property="myImage" destination="PTS-Gj-uD1" id="ogH-VJ-lX0"/>
+                        <outlet property="myScroll" destination="6Pa-hQ-GEm" id="bSw-3v-zAR"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zV5-KM-BR6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ijp-i4-gc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2632.8000000000002" y="129.98500749625188"/>
+            <point key="canvasLocation" x="3466.4000000000001" y="120.98950524737631"/>
         </scene>
         <!--Feed Subscription View Controller-->
         <scene sceneID="qqt-hB-baV">

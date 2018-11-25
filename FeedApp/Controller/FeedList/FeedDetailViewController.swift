@@ -22,7 +22,7 @@ class FeedDetailViewController: UIViewController, WKNavigationDelegate {
     
         self.myWebView.navigationDelegate = self
         self.myWebView.scrollView.delegate = self
-        self.myWebView.loadHTMLString(FeedDetailViewController.parseHtml(myFeedItem?.html) , baseURL: nil)
+        self.myWebView.loadHTMLString(parseHtml(myFeedItem?.html) , baseURL: nil)
 
     }
     
@@ -30,9 +30,14 @@ class FeedDetailViewController: UIViewController, WKNavigationDelegate {
         self.recalculateImageWidth()
     }
 
-    private static func parseHtml(_ input: String?) -> String{
+    private func parseHtml(_ input: String?) -> String{
         var html = "<head><style>* { font-family: Optima-Regular; text-align: justify; } h1 { text-align: left; } </style>"
         html += "<meta name='viewport' content='initial-scale=1.0' width='device-width'/></head><body>"
+        
+        if let feedItem = myFeedItem {
+            html += "<h1>\(feedItem.title)</h1>"
+        }
+        
         html += input ?? ""
     
         html += "</body>"
@@ -50,7 +55,7 @@ class FeedDetailViewController: UIViewController, WKNavigationDelegate {
     func viewWillTransition(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition(in: view, animation: nil) { (UIViewControllerTransitionCoordinatorContext) in
         
-            self.myWebView.loadHTMLString(FeedDetailViewController.parseHtml(self.myFeedItem?.html) , baseURL: nil)
+            self.myWebView.loadHTMLString(self.parseHtml(self.myFeedItem?.html) , baseURL: nil)
         }
     }
     
