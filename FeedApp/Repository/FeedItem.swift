@@ -35,14 +35,14 @@ class FeedItem {
         readed = feed.readed
     }
     
-    init(_ feed: RSSFeedItem) {
+    init(_ feed: RSSFeedItem, subscriptiontype: String) {
        
         html = FeedItem.parseHtml(feed.description)
         imageSrc = FeedItem.getFirstImageSrc(html)
         imageUI = FeedItem.getUIImage(imageSrc)
         title = feed.title ?? ""
         firstParagraph = FeedItem.getFirstParagraph(html)
-        idHash = title.sha256() + "-" + html.sha256()
+        idHash = title.sha256() + "-" + subscriptiontype.sha256()
         readed = false
     }
     

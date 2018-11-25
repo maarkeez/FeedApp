@@ -53,7 +53,7 @@ class FeedsClient {
                     
                     var feedItems : [FeedItem] = []
                     for item in items {
-                        feedItems.append(FeedItem(item))
+                        feedItems.append(FeedItem(item, subscriptiontype: feedSubscription.name))
                     }
                     
                     let itemsAdded = FeedItemRepository.singleton.add(feedSubscription.name, items: feedItems)
