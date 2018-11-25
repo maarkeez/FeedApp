@@ -10,17 +10,20 @@ import UIKit
 import WebKit
 
 class FeedSubscriptionViewController: UIViewController, FeedsClientSubscriber {
+    @IBOutlet weak var myLoadAllItem: UIBarButtonItem!
     
     @IBOutlet weak var myTable: UITableView!
     
     var nextLoadIndex = -1
     
     @IBAction func doLoadAll(_ sender: Any) {
+        myLoadAllItem.isEnabled = false
+        
         nextLoadIndex = -1
         // Change all subscription status
         for index in 0..<FeedSubscriptionRepository.singleton.feedSubscriptions.count {
-            let cell = myTable.cellForRow(at: IndexPath(item: index, section: 0)) as! FeedSubscriptionCell
-            cell.myStatus.text = "Loading ..."
+            let cell = myTable.cellForRow(at: IndexPath(item: index, section: 0)) as? FeedSubscriptionCell
+            cell?.myStatus.text = "Loading ..."
         }
         
         // Load each subscription feeds asynchronusly
@@ -32,9 +35,9 @@ class FeedSubscriptionViewController: UIViewController, FeedsClientSubscriber {
        
         // Change all subscription status
         for index in 0..<FeedSubscriptionRepository.singleton.feedSubscriptions.count {
-            let cell = myTable.cellForRow(at: IndexPath(item: index, section: 0)) as! FeedSubscriptionCell
-            if cell.myLabel.text == feedSubscription.name {
-                cell.myStatus.text = "Load finished!"
+            let cell = myTable.cellForRow(at: IndexPath(item: index, section: 0)) as? FeedSubscriptionCell
+            if cell?.myLabel.text == feedSubscription.name {
+                cell?.myStatus.text = "Load finished!"
                 print("Load finished for: ", feedSubscription.name)
             }
         }
@@ -48,6 +51,8 @@ class FeedSubscriptionViewController: UIViewController, FeedsClientSubscriber {
         nextLoadIndex += 1
         if(nextLoadIndex<FeedSubscriptionRepository.singleton.feedSubscriptions.count){
             FeedsClient.singleton.restart(self, feedSubscription: FeedSubscriptionRepository.singleton.feedSubscriptions[nextLoadIndex])
+        }else{
+            myLoadAllItem.isEnabled = true
         }
             
     }

@@ -265,6 +265,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="myLoadAllItem" destination="W5X-al-yyi" id="0ej-SM-Oou"/>
                         <outlet property="myTable" destination="wE6-pg-n6W" id="hON-OH-OeN"/>
                     </connections>
                 </viewController>
