@@ -19,9 +19,9 @@ class FeedItemRepository {
             return
         }
         ctx = appDelegate.persistentContainer.viewContext
-
+        
     }
-  
+    
     
     func add(_ subscriptionType: String, items: [FeedItem]) -> [FeedItem]{
         
@@ -31,7 +31,7 @@ class FeedItemRepository {
         let itemsReversed = items.reversed()
         
         
-
+        
         do{
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Feed")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "insertDate", ascending: false)]
@@ -43,29 +43,29 @@ class FeedItemRepository {
                 feedIds.append(feed.id!)
             }
             
-           
-        for item in itemsReversed {
-            if(feedIds.contains(item.idHash)){
-                continue
+            
+            for item in itemsReversed {
+                if(feedIds.contains(item.idHash)){
+                    continue
+                }
+                let feedItem = Feed(context: ctx!)
+                updateMO(item, feedItem: feedItem, subscriptionType: subscriptionType)
+                toReturn.append(item)
+                feedItem.insertDate = Date()
+                
+                //NSManagedObject(entity: feedEntity!, insertInto: ctx)
+                /*
+                 feedItem.setValue(subscriptionType, forKey: "subscription")
+                 feedItem.setValue(item.idHash, forKeyPath: "id")
+                 feedItem.setValue(item.firstParagraph, forKey: "firstParagraph")
+                 feedItem.setValue(item.html, forKey: "html")
+                 feedItem.setValue(item.imageSrc, forKey: "imageSrc")
+                 feedItem.setValue(item.title, forKey: "title")
+                 feedItem.setValue(item.readed, forKey: "readed")
+                 */
             }
-            let feedItem = Feed(context: ctx!)
-            updateMO(item, feedItem: feedItem, subscriptionType: subscriptionType)
-            toReturn.append(item)
-            feedItem.insertDate = Date()
-           
-            //NSManagedObject(entity: feedEntity!, insertInto: ctx)
-            /*
-            feedItem.setValue(subscriptionType, forKey: "subscription")
-            feedItem.setValue(item.idHash, forKeyPath: "id")
-            feedItem.setValue(item.firstParagraph, forKey: "firstParagraph")
-            feedItem.setValue(item.html, forKey: "html")
-            feedItem.setValue(item.imageSrc, forKey: "imageSrc")
-            feedItem.setValue(item.title, forKey: "title")
-            feedItem.setValue(item.readed, forKey: "readed")
- */
-        }
-        
-       
+            
+            
             try ctx!.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
@@ -105,7 +105,7 @@ class FeedItemRepository {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-      
+        
     }
     
     func list(subscriptionType: String) -> [FeedItem] {
@@ -132,5 +132,19 @@ class FeedItemRepository {
         return toRetun
     }
     
-   
+    func count(_ subscriptionType: String, readed: Bool) -> Int {
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Feed")
+        fetchRequest.predicate = NSPredicate(format: "subscriptionType == %@ AND readed == %@", subscriptionType,NSNumber(booleanLiteral:  readed))
+        do {
+            
+            let feedsCount = try ctx!.count(for: (fetchRequest))
+            return feedsCount
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        return 0
+    }
 }

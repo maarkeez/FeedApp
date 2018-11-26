@@ -238,6 +238,17 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dga-hk-ulH">
+                                                    <rect key="frame" x="327" y="19" width="32" height="32"/>
+                                                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="AZa-3O-dhv"/>
+                                                        <constraint firstAttribute="height" constant="32" id="Go0-aM-Fyv"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="o46-IJ-XNz" secondAttribute="trailing" constant="4" id="Dva-BW-qgY"/>
@@ -245,12 +256,15 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="Q5d-oK-ccM" secondAttribute="bottom" constant="4" id="T6T-P8-e0d"/>
                                                 <constraint firstItem="Q5d-oK-ccM" firstAttribute="leading" secondItem="utU-Xs-Qa0" secondAttribute="leadingMargin" constant="4" id="V0w-yf-hFc"/>
                                                 <constraint firstItem="o46-IJ-XNz" firstAttribute="leading" secondItem="utU-Xs-Qa0" secondAttribute="leadingMargin" constant="4" id="dwT-ju-NDa"/>
+                                                <constraint firstAttribute="trailing" secondItem="Dga-hk-ulH" secondAttribute="trailing" constant="16" id="oCG-Hs-nRs"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Q5d-oK-ccM" secondAttribute="trailing" constant="4" id="rr1-6I-pgI"/>
+                                                <constraint firstItem="Dga-hk-ulH" firstAttribute="centerY" secondItem="utU-Xs-Qa0" secondAttribute="centerY" id="u9j-CZ-D3P"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="myLabel" destination="o46-IJ-XNz" id="qFS-x6-hxq"/>
                                             <outlet property="myStatus" destination="Q5d-oK-ccM" id="2O2-aq-M4H"/>
+                                            <outlet property="myUnreaded" destination="Dga-hk-ulH" id="ECq-ES-Zx3"/>
                                             <segue destination="Cht-Do-DFR" kind="show" identifier="FeedsViewSegue" id="kye-oM-F2C"/>
                                         </connections>
                                     </tableViewCell>

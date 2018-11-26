@@ -59,6 +59,8 @@ class FeedsClient {
                     let itemsAdded = FeedItemRepository.singleton.add(feedSubscription.name, items: feedItems)
                     print("Items added: ", itemsAdded.count)
                     
+                    feedSubscription.unreadedItems = FeedItemRepository.singleton.count(feedSubscription.name, readed: false)
+                    
                     DispatchQueue.main.async {
                         subscriber.notifyEndFeed(feedSubscription)
                     }

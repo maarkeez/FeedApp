@@ -16,31 +16,77 @@ class FeedSubscriptionViewController: UIViewController, FeedsClientSubscriber {
     
     var nextLoadIndex = -1
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        recalculateNumberOfUnreadedItems()
+        
+        self.myTable.delegate = self
+        self.myTable.dataSource = self
+    }
+    
     @IBAction func doLoadAll(_ sender: Any) {
         myLoadAllItem.isEnabled = false
         
         nextLoadIndex = -1
+        changeAllSubscriptionStatus()
+        loadNext()
+    }
+    
+    
+}
+// MARK: - Fetch number of unreaded items
+extension FeedSubscriptionViewController{
+    
+    func recalculateNumberOfUnreadedItems(){
+        DispatchQueue.global(qos: .default).async {
+            // ... backgournd thread
+            for subscriptionItem in FeedSubscriptionRepository.singleton.feedSubscriptions {
+                subscriptionItem.unreadedItems = FeedItemRepository.singleton.count(subscriptionItem.name, readed: false)
+                print("Unreaded: " , subscriptionItem.unreadedItems)
+            }
+            
+            DispatchQueue.main.async {
+                self.myTable.reloadData()
+            }
+        }
+    }
+    
+}
+
+
+// MARK: - Fetch new data
+extension FeedSubscriptionViewController{
+    
+    func changeAllSubscriptionStatus(){
         // Change all subscription status
         for index in 0..<FeedSubscriptionRepository.singleton.feedSubscriptions.count {
             FeedSubscriptionRepository.singleton.feedSubscriptions[index].status = "Loading ..."
         }
         self.myTable.reloadData()
-        
-        // Load each subscription feeds asynchronusly
-        loadNext()
     }
     
+    func loadNext(){
+        nextLoadIndex += 1
+        if(nextLoadIndex<FeedSubscriptionRepository.singleton.feedSubscriptions.count){
+            FeedsClient.singleton.restart(self, feedSubscription: FeedSubscriptionRepository.singleton.feedSubscriptions[nextLoadIndex])
+        }else{
+            myLoadAllItem.isEnabled = true
+        }
+        
+    }
     
     func notifyEndFeed(_ feedSubscription: FeedSubscriptionItem) {
-       
+        
         // Change all subscription status
         var indexPathsToBeReloaded : [IndexPath] = []
         for index in 0..<FeedSubscriptionRepository.singleton.feedSubscriptions.count {
             let subscriptionItem = FeedSubscriptionRepository.singleton.feedSubscriptions[index]
             if subscriptionItem.name == feedSubscription.name {
                 FeedSubscriptionRepository.singleton.feedSubscriptions[index].status = "Load finished!"
+                FeedSubscriptionRepository.singleton.feedSubscriptions[index].unreadedItems = feedSubscription.unreadedItems
                 print("Load finished for: ", feedSubscription.name)
-               indexPathsToBeReloaded.append(IndexPath(row: index, section: 0))
+                indexPathsToBeReloaded.append(IndexPath(row: index, section: 0))
             }
         }
         
@@ -55,24 +101,11 @@ class FeedSubscriptionViewController: UIViewController, FeedsClientSubscriber {
         self.myTable.endUpdates()
     }
     
-    func loadNext(){
-        nextLoadIndex += 1
-        if(nextLoadIndex<FeedSubscriptionRepository.singleton.feedSubscriptions.count){
-            FeedsClient.singleton.restart(self, feedSubscription: FeedSubscriptionRepository.singleton.feedSubscriptions[nextLoadIndex])
-        }else{
-            myLoadAllItem.isEnabled = true
-        }
-            
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.myTable.delegate = self
-        self.myTable.dataSource = self
-    }
-    
+}
+
+
+// MARK: - Navigation
+extension FeedSubscriptionViewController{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -85,6 +118,8 @@ class FeedSubscriptionViewController: UIViewController, FeedsClientSubscriber {
 }
 
 
+
+// MARK: - Table
 extension FeedSubscriptionViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedSubscriptionCell") as! FeedSubscriptionCell
@@ -93,6 +128,9 @@ extension FeedSubscriptionViewController: UITableViewDataSource, UITableViewDele
         
         cell.myLabel.text = item.name
         cell.myStatus.text = item.status
+        cell.myUnreaded.text = "\(item.unreadedItems)"
+        cell.myUnreaded.layer.cornerRadius =  cell.myUnreaded.frame.size.width/2
+        cell.myUnreaded.layer.masksToBounds = true
         
         return cell
     }
