@@ -97,13 +97,3 @@ extension FeedsViewController: UITableViewDataSource, UITableViewDelegate {
         myCountItem.title = "\(items.count)"
     }
 }
-
-/*
- let item = items[0]
- let title = item.title ?? ""
- var html = "<head><style>* { max-width:  320px; font-family: Optima-Regular; text-align: justify; } h1 { text-align: left; } </style>"
- html += "<meta name='viewport' content='initial-scale=1.0'/></head><body>"
- html += "<h1>\(title)</h1>"
- html += item.description ?? ""
- html += "</body>"
- */

@@ -98,9 +98,9 @@
 		E55B7AD021A9576300CA345C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E55B7ADE21A9A0D000CA345C /* FeedSubscription */,
+				E5CD51F321ACA02A00FF8D74 /* FeedImage */,
 				E55B7AD121A95A9F00CA345C /* FeedList */,
-				E55B7AF121A9CD3A00CA345C /* FeedImageDetailViewController.swift */,
+				E55B7ADE21A9A0D000CA345C /* FeedSubscription */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -118,10 +118,7 @@
 		E55B7AD421A95BBD00CA345C /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				E55B7AD521A95BD200CA345C /* FeedsClient.swift */,
-				E55B7AD921A9670E00CA345C /* FeedItem.swift */,
 				E55B7AED21A9B02400CA345C /* FeedItemRepository.swift */,
-				E55B7AE421A9A24100CA345C /* FeedSubscriptionItem.swift */,
 				E55B7AE621A9A28300CA345C /* FeedSubscriptionRepository.swift */,
 			);
 			path = Repository;
@@ -168,8 +165,10 @@
 			children = (
 				E569A5BC21A8BE3C00ABAE92 /* AppDelegate.swift */,
 				E569A5C021A8BE3C00ABAE92 /* Main.storyboard */,
-				E55B7AD421A95BBD00CA345C /* Repository */,
+				E5CD51F421ACA03E00FF8D74 /* Connector */,
 				E55B7AD021A9576300CA345C /* Controller */,
+				E5CD51F221AC9FF600FF8D74 /* Entity */,
+				E55B7AD421A95BBD00CA345C /* Repository */,
 				E55B7ADB21A99D0200CA345C /* Utils */,
 				E569A5C321A8BE3F00ABAE92 /* Assets.xcassets */,
 				E569A5C521A8BE3F00ABAE92 /* LaunchScreen.storyboard */,
@@ -177,6 +176,31 @@
 				E55B7AEA21A9AF7F00CA345C /* FeedApp.xcdatamodeld */,
 			);
 			path = FeedApp;
+			sourceTree = "<group>";
+		};
+		E5CD51F221AC9FF600FF8D74 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				E55B7AD921A9670E00CA345C /* FeedItem.swift */,
+				E55B7AE421A9A24100CA345C /* FeedSubscriptionItem.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		E5CD51F321ACA02A00FF8D74 /* FeedImage */ = {
+			isa = PBXGroup;
+			children = (
+				E55B7AF121A9CD3A00CA345C /* FeedImageDetailViewController.swift */,
+			);
+			path = FeedImage;
+			sourceTree = "<group>";
+		};
+		E5CD51F421ACA03E00FF8D74 /* Connector */ = {
+			isa = PBXGroup;
+			children = (
+				E55B7AD521A95BD200CA345C /* FeedsClient.swift */,
+			);
+			path = Connector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
