@@ -49,6 +49,8 @@ class FeedsViewController: UIViewController {
         {
             destination.myFeedItem = self.items[itemIndex]
             self.items[itemIndex].readed = true
+            self.myFeedSubscription?.unreadedItems -= 1
+            reloadItemCountLabel()
             DispatchQueue.global(qos: .default).async {
                 FeedItemRepository.singleton.update(self.items[itemIndex], subscriptionType: self.myFeedSubscription!.name, readed: true)
             }
@@ -94,6 +96,14 @@ extension FeedsViewController: UITableViewDataSource, UITableViewDelegate {
         myTable.insertRows(at: [NSIndexPath(row: items.count-1, section: 0) as IndexPath],
                            with: .automatic)
         myTable.endUpdates()
-        myCountItem.title = "\(items.count)"
+        reloadItemCountLabel()
+    }
+    
+    func reloadItemCountLabel(){
+        if let feedSubscription = myFeedSubscription {
+            myCountItem.title = "\(feedSubscription.unreadedItems) / \(items.count)"
+        }else{
+            myCountItem.title = "\(items.count)"
+        }
     }
 }
