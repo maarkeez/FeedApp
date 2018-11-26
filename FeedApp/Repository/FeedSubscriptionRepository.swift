@@ -31,6 +31,10 @@ class FeedSubscriptionRepository {
         
         feedSubscriptions.append(FeedSubscriptionItem("Asco de vida", url: "http://feeds2.feedburner.com/AscoDeVida"))
         feedSubscriptions.append(FeedSubscriptionItem("Desmotivaciones", url: "https://desmotivaciones.es/rss.xml"))
+        
+        feedSubscriptions.append(FeedSubscriptionItem("Abc futbol", url: "https://www.abc.es/rss/feeds/abc_Futbol.xml"))
+
+       
 
         feedSubscriptions.sort { $0.name < $1.name }
         self.feedSubscriptions = feedSubscriptions
