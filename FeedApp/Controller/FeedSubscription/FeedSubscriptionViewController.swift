@@ -22,9 +22,9 @@ class FeedSubscriptionViewController: UIViewController, FeedsClientSubscriber {
         nextLoadIndex = -1
         // Change all subscription status
         for index in 0..<FeedSubscriptionRepository.singleton.feedSubscriptions.count {
-            let cell = myTable.cellForRow(at: IndexPath(item: index, section: 0)) as? FeedSubscriptionCell
-            cell?.myStatus.text = "Loading ..."
+            FeedSubscriptionRepository.singleton.feedSubscriptions[index].status = "Loading ..."
         }
+        self.myTable.reloadData()
         
         // Load each subscription feeds asynchronusly
         loadNext()
@@ -34,17 +34,25 @@ class FeedSubscriptionViewController: UIViewController, FeedsClientSubscriber {
     func notifyEndFeed(_ feedSubscription: FeedSubscriptionItem) {
        
         // Change all subscription status
+        var indexPathsToBeReloaded : [IndexPath] = []
         for index in 0..<FeedSubscriptionRepository.singleton.feedSubscriptions.count {
-            let cell = myTable.cellForRow(at: IndexPath(item: index, section: 0)) as? FeedSubscriptionCell
-            if cell?.myLabel.text == feedSubscription.name {
-                cell?.myStatus.text = "Load finished!"
+            let subscriptionItem = FeedSubscriptionRepository.singleton.feedSubscriptions[index]
+            if subscriptionItem.name == feedSubscription.name {
+                FeedSubscriptionRepository.singleton.feedSubscriptions[index].status = "Load finished!"
                 print("Load finished for: ", feedSubscription.name)
+               indexPathsToBeReloaded.append(IndexPath(row: index, section: 0))
             }
         }
         
-        
+        reloadRows(indexPathsToBeReloaded)
         loadNext()
         
+    }
+    
+    func reloadRows(_ indexPathsToBeReloaded : [IndexPath]){
+        self.myTable.beginUpdates()
+        self.myTable.reloadRows(at: indexPathsToBeReloaded, with: .none)
+        self.myTable.endUpdates()
     }
     
     func loadNext(){
@@ -84,7 +92,7 @@ extension FeedSubscriptionViewController: UITableViewDataSource, UITableViewDele
         let item = FeedSubscriptionRepository.singleton.feedSubscriptions[indexPath.row]
         
         cell.myLabel.text = item.name
-        cell.myStatus.text = ""
+        cell.myStatus.text = item.status
         
         return cell
     }
